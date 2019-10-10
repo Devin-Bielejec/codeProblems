@@ -44,3 +44,18 @@ function linearSearch(arr, value){
 }
 
 console.log(linearSearch([1,2,3,4,5,6], 5));
+
+
+const binarySum = (A,B) => {
+    let rem = 0;
+    let C = [];
+    for (let i = 0; i < A.length; i++) {
+        curSum = rem + A[i] + B[i];
+        C.unshift(curSum % 2);
+        rem = Math.floor(curSum/2);
+    }
+    C.unshift(rem);
+    return C;
+}
+
+console.log(binarySum([1,1,1],[1,0,1]))
