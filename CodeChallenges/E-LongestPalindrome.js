@@ -1,3 +1,5 @@
+//https://leetcode.com/problems/longest-palindrome/submissions/
+
 var longestPalindrome = function(s) {
     let hash = {};
     for (let i = 0; i < s.length; i++){
@@ -27,6 +29,27 @@ var longestPalindrome = function(s) {
                 count += hash[key]-1
                 }
             }
+        }
+    }
+    return count;
+};
+
+//Revised
+var longestPalindrome = function(s) {
+    let hash = {};
+    for (let i = 0; i < s.length; i++){
+        let curLet = s[i];
+        if (curLet in hash) {
+            hash[curLet]++;
+        } else {
+            hash[curLet] = 1;
+        }
+    }
+    let count = 0;
+    for (let key in hash) {
+        count += Math.floor(hash[key]/2)*2
+        if (count % 2 === 0 && hash[key] % 2 === 1) {
+            count++;
         }
     }
     return count;
